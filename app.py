@@ -4,12 +4,14 @@ import main
 
 app = Flask(__name__)
 
-cors = CORS(app, origins=[
+cors = CORS(app, resources={r"/api/*": {"origins": [
   "https://localhost:3000", 
   "https://localhost", 
+  "http://localhost:3000", 
+  "http://localhost", 
   "https://www.kchoi.io", 
   "https://kchoi-io-frontend.onrender.com/"
-  ])
+  ]}})
 
 @app.post('/api/data')
 def create_query():
